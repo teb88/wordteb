@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface TopBarProps {
   logo: React.ReactNode | string;
@@ -7,11 +7,11 @@ interface TopBarProps {
 const TopBar: React.FC<TopBarProps> = ({ logo }) => {
   return (
     <nav className="flex justify-between items-center">
-      <div></div>      
-      {logo}      
+      <div></div>
+      {logo}
       <div></div>
     </nav>
   );
-}
+};
 
-export default TopBar
+export default TopBar;

@@ -7,13 +7,13 @@ type GameState = {
   matrix: Array<Array<LetterBlock>>;
   discoveredLetters: Record<string, MatchType>;
   gameOver: boolean;
-}
+};
 
 const matchValue: Record<MatchType, number> = {
-  'none': 0,
-  'exists': 1,
-  'in-place': 2
-}
+  none: 0,
+  exists: 1,
+  'in-place': 2,
+};
 
 const initialState: GameState = {
   currentAttempt: 0,
@@ -49,7 +49,10 @@ export default createSlice({
 
       state.currentAttempt++;
     },
-    addDiscoveredLetter(state, { payload: { result } }: Action<{ result: Array<LetterBlock> }>) {
+    addDiscoveredLetter(
+      state,
+      { payload: { result } }: Action<{ result: Array<LetterBlock> }>,
+    ) {
       const alreadyDiscovered = state.discoveredLetters;
       result.forEach(({ letter, matchType }) => {
         if (!alreadyDiscovered[letter]) {
@@ -60,7 +63,7 @@ export default createSlice({
         if (matchValue[matchType] > matchValue[alreadyDiscovered[letter]]) {
           alreadyDiscovered[letter] = matchType;
         }
-      })      
-    }
+      });
+    },
   },
 });

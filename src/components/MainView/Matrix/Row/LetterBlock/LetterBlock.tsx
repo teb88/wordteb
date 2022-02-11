@@ -9,13 +9,7 @@ const matchTypeClasses = {
 
 const LetterBlock: React.FC<LetterBlock> = ({ matchType, letter }) => {
   const matchTypeClx = matchTypeClasses[matchType] || 'border-gray-400 ';
-  return (
-    <div
-      className={`letter-block ${matchTypeClx}`}
-    >
-      {letter}
-    </div>
-  );
+  return <div className={`letter-block ${matchTypeClx}`}>{letter}</div>;
 };
 
 export default LetterBlock;

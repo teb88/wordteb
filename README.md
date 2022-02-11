@@ -1,9 +1,13 @@
 # WordTeb
+
 ### Just another "Guess the Word" game
+
 ---
-_Work in process_ ⚠️
----
+
+## _Work in process_ ⚠️
+
 I started this project for a few different reasons.
+
 - To have fun
 - To learn and keep learning
 - To have something to show

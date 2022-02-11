@@ -7,9 +7,9 @@ import errorSlice from './slices/error.slice';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-  reducer: { 
-    game: wordleSlice.reducer, 
-    error: errorSlice.reducer 
+  reducer: {
+    game: wordleSlice.reducer,
+    error: errorSlice.reducer,
   },
   middleware: [sagaMiddleware],
 });

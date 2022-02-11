@@ -8,7 +8,7 @@ export const selectMainState = createSelector(
 
 export const selectMatrix = createSelector(
   selectMainState,
-  (wordle) => wordle.matrix  
+  (wordle) => wordle.matrix,
 );
 
 export const selectCurrentAttempt = createSelector(
@@ -24,5 +24,5 @@ export const selectWord = createSelector(
 
 export const selectDiscoveredLetters = createSelector(
   selectMainState,
-  state => state.discoveredLetters
+  (state) => state.discoveredLetters,
 );

@@ -16,6 +16,9 @@ export const actionVerifyWord_success = createAction(
 );
 export const actionAddLetter = createAction(ADD_LETTER, 'letter');
 export const actionRemoveLetter = createAction(REMOVE_LETTER);
-export const actionAddDiscoveredLetters = createAction(ADD_DISCOVERED_LETTERS, 'result');
+export const actionAddDiscoveredLetters = createAction(
+  ADD_DISCOVERED_LETTERS,
+  'result',
+);
 export const actionSetError = createAction(SET_ERROR, 'error');
 export const actionUnsetError = createAction(UNSET_ERROR);

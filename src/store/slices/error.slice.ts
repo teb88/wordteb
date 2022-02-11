@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Action } from "src/types";
-import type { ErrorState } from "src/types";
+import { createSlice } from '@reduxjs/toolkit';
+import { Action } from 'src/types';
+import type { ErrorState } from 'src/types';
 
 const initialState: ErrorState = null;
 
@@ -13,8 +13,8 @@ const errorSlice = createSlice({
     },
     unsetError() {
       return null;
-    }
-  }
+    },
+  },
 });
 
 export default errorSlice;
