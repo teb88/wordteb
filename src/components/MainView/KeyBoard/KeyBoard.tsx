@@ -2,16 +2,33 @@ import React from 'react';
 import keys from './keys';
 import usePhysicalKeyboard from './usePhysicalKeyboard';
 
+import type { MatchType } from 'src/types';
+
 interface KeyboardProps {
   onKeyPress(str: string): void;
   onPressEnter(): void;
   onPressBackspace(): void;
+  discoveredLetters: Record<string, MatchType>
+}
+
+const getMatchClasses = (matchType: MatchType) => {
+  switch(matchType) {
+    case 'none':
+      return 'bg-letter-none';
+    case 'exists':
+      return 'bg-letter-exists';
+    case 'in-place':
+      return 'bg-letter-in-place';
+    default:
+      return '';
+  }
 }
 
 const KeyBoard: React.FC<KeyboardProps> = ({
   onKeyPress,
   onPressEnter,
   onPressBackspace,
+  discoveredLetters,
 }) => {
   
   usePhysicalKeyboard({
@@ -29,7 +46,7 @@ const KeyBoard: React.FC<KeyboardProps> = ({
         return value.split('').map((key: string, i: number) => (
           <button
             key={key + i}
-            className={keyClasses}
+            className={`${keyClasses} ${getMatchClasses(discoveredLetters?.[key])}`}
             onClick={() => onKeyPress(key.toUpperCase())}
           >
             {key}

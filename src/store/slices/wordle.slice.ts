@@ -1,10 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { MAX_ATTEMPTS } from 'src/configs';
-import { Action, LetterBlock } from 'src/types';
+import { Action, LetterBlock, MatchType } from 'src/types';
 
-const initialState = {
+type GameState = {
+  currentAttempt: number;
+  matrix: Array<Array<LetterBlock>>;
+  discoveredLetters: Record<string, MatchType>;
+  gameOver: boolean;
+}
+
+const matchValue: Record<MatchType, number> = {
+  'none': 0,
+  'exists': 1,
+  'in-place': 2
+}
+
+const initialState: GameState = {
   currentAttempt: 0,
   matrix: Array(MAX_ATTEMPTS).fill([]),
+  discoveredLetters: {},
   gameOver: false,
 };
 
@@ -35,5 +49,18 @@ export default createSlice({
 
       state.currentAttempt++;
     },
+    addDiscoveredLetter(state, { payload: { result } }: Action<{ result: Array<LetterBlock> }>) {
+      const alreadyDiscovered = state.discoveredLetters;
+      result.forEach(({ letter, matchType }) => {
+        if (!alreadyDiscovered[letter]) {
+          alreadyDiscovered[letter] = matchType;
+          return;
+        }
+
+        if (matchValue[matchType] > matchValue[alreadyDiscovered[letter]]) {
+          alreadyDiscovered[letter] = matchType;
+        }
+      })      
+    }
   },
 });

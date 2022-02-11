@@ -21,3 +21,8 @@ export const selectWord = createSelector(
   selectCurrentAttempt,
   (matrix, attempt) => matrix[attempt].map(({ letter }) => letter).join(''),
 );
+
+export const selectDiscoveredLetters = createSelector(
+  selectMainState,
+  state => state.discoveredLetters
+);

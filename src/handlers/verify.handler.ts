@@ -6,7 +6,7 @@ export const handleVerifyWord = (word: string) => {
     return false;
   }
   const winnerWord = getWinnerWord();
-
+  
   if (word.toLowerCase() === winnerWord) {
     return word.split('').map((letter) => ({ letter, matchType: 'in-place' }));
   }
@@ -15,7 +15,7 @@ export const handleVerifyWord = (word: string) => {
     if (word[index].toLowerCase() === winnerWord[index].toLowerCase()) {
       return 'in-place';
     }
-
+  
     return winnerWord.includes(word[index]) ? 'exists' : 'none';
   };
 
