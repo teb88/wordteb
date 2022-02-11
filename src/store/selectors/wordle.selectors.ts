@@ -1,13 +1,19 @@
 import { createSelector } from 'reselect';
+import { RootState } from '..';
+
+export const selectMainState = createSelector(
+  (state: RootState) => state.game,
+  (wordle) => wordle,
+);
 
 export const selectMatrix = createSelector(
-  (state) => state.matrix,
-  (matrix) => matrix,
+  selectMainState,
+  (wordle) => wordle.matrix  
 );
 
 export const selectCurrentAttempt = createSelector(
-  (state) => state.currentAttempt,
-  (attempt) => attempt,
+  selectMainState,
+  (wordle) => wordle.currentAttempt,
 );
 
 export const selectWord = createSelector(
