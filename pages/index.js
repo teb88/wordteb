@@ -1,4 +1,4 @@
-import MainView from '../src/components/MainView/MainView';
+import MainView from '@components/MainView';
 
 export default function Home() {
   return (

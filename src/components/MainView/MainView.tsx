@@ -1,29 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  actionAddLetter,
-  actionRemoveLetter,
-  actionVerifyWord_start,
-} from '@store/actions';
+
 import KeyBoard from './KeyBoard';
 import Matrix from './Matrix';
 import TopBar from './TopBar';
 
-const MainView = () => {
-  const dispatch = useDispatch();
+interface MainViewProps {
+  onVerifyWord(): void;
+  onAddLetter(letter: string): void;
+  onRemoveLetter(): void;
+}
 
-  const handleVerifyWord = () => {
-    dispatch(actionVerifyWord_start());
-  };
-
-  const handleAddLetter = (str: string) => {
-    dispatch(actionAddLetter(str));
-  };
-
-  const handleRemoveLetter = () => {
-    dispatch(actionRemoveLetter());
-  };
-
+const MainView: React.FC<MainViewProps> = ({ 
+  onAddLetter, 
+  onRemoveLetter, 
+  onVerifyWord 
+}) => {
   return (
     <div className="max-w-lg mx-auto h-full flex flex-col justify-between">
       <TopBar logo={(
@@ -33,9 +24,9 @@ const MainView = () => {
       )} />
       <Matrix className="mb-4" />
       <KeyBoard
-        onPressEnter={handleVerifyWord}
-        onPressBackspace={handleRemoveLetter}
-        onKeyPress={handleAddLetter}
+        onPressEnter={onVerifyWord}
+        onPressBackspace={onRemoveLetter}
+        onKeyPress={(letter) => onAddLetter(letter)}
       />
     </div>
   );
