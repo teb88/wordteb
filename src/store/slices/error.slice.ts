@@ -15,7 +15,7 @@ const errorSlice = createSlice({
       return { ...state, nonVerified: true };
     },
     unsetNonVerified(state) {
-      if ('nonVerified' in state) {
+      if (state !== null && 'nonVerified' in state) {
         state.nonVerified = null;
       }
     },

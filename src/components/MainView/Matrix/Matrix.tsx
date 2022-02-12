@@ -1,23 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectMatrix } from '@store/selectors/wordle.selectors';
 import { LetterBlock } from 'src/types';
-import Row from './Row/Row';
+import Row from './Row';
 
 interface MatrixProps {
-  matrix: Array<Array<LetterBlock>>;
-  currentAttempt: number;
+  matrix: Array<Array<LetterBlock>>;  
   className?: string;
-  hasNonVerifiedErr: null | true;
-  unsetNonVerifiedErr(): void;
 }
 
 const Matrix: React.FC<MatrixProps> = ({
   matrix,
   className,
-  hasNonVerifiedErr,
-  unsetNonVerifiedErr,
-  currentAttempt,
 }) => {
   const clx = `w-full ${className}`;
 
@@ -27,8 +19,7 @@ const Matrix: React.FC<MatrixProps> = ({
         <Row
           key={i}
           rowData={row}
-          hasNonVerifiedErr={i === currentAttempt && hasNonVerifiedErr ? true : null}
-          unsetNonVerifiedErr={unsetNonVerifiedErr}
+          rowNumber={i}
         />
       ))}
     </div>

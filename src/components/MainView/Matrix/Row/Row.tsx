@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { MAX_CHAR_PER_WORD } from 'src/configs';
 
 interface RowProps {
+  currentAttempt: number;
+  rowNumber: number;
   rowData: Array<LetterBlockType>;
   hasNonVerifiedErr: null | true;
   unsetNonVerifiedErr(): void;
@@ -26,6 +28,8 @@ const Row: React.FC<RowProps> = ({
   rowData,
   hasNonVerifiedErr,
   unsetNonVerifiedErr,
+  currentAttempt,
+  rowNumber,
 }) => {
   const [animation, setAnimation] = useState<string>('initial');
 
@@ -34,11 +38,11 @@ const Row: React.FC<RowProps> = ({
     ...Array(MAX_CHAR_PER_WORD - rowData.length).fill({ letter: '' }),
   ];
 
-  useEffect(() => {
-    if (hasNonVerifiedErr) {
+  useEffect(() => {    
+    if (currentAttempt === rowNumber && hasNonVerifiedErr) {
       setAnimation('animation');
     }
-  }, [hasNonVerifiedErr]);
+  }, [hasNonVerifiedErr, currentAttempt, rowNumber]);
   
   const handleAnimationEnded = () => {
     setAnimation('initial');
