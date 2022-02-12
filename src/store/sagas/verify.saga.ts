@@ -2,6 +2,7 @@ import { takeLeading, call, select, put } from 'redux-saga/effects';
 import { verifyWordRequest } from 'src/services';
 import {
   actionAddDiscoveredLetters,
+  actionSetNonVerifiedErr,
   actionVerifyWord_success,
 } from '@store/actions';
 import { VERIFY_SAGA_START } from '@store/actions/constants';
@@ -15,6 +16,8 @@ function* handleVerification() {
     if (response.verified) {
       yield put(actionVerifyWord_success(response.result));
       yield put(actionAddDiscoveredLetters(response.result));
+    } else {      
+      yield put(actionSetNonVerifiedErr());
     }
   } catch (error) {
     //yield put(actionSetError(error));

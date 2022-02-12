@@ -3,7 +3,9 @@ import {
   ADD_LETTER,
   REMOVE_LETTER,
   SET_ERROR,
+  SET_NONVERIFIED_ERR,
   UNSET_ERROR,
+  UNSET_NONVERIFIED_ERR,
   VERIFY_SAGA_START,
   VERIFY_SAGA_SUCCESS,
 } from './constants';
@@ -22,3 +24,6 @@ export const actionAddDiscoveredLetters = createAction(
 );
 export const actionSetError = createAction(SET_ERROR, 'error');
 export const actionUnsetError = createAction(UNSET_ERROR);
+
+export const actionSetNonVerifiedErr = createAction(SET_NONVERIFIED_ERR);
+export const actionUnsetNonVerifiedErr = createAction(UNSET_NONVERIFIED_ERR);

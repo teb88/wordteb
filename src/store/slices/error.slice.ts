@@ -11,6 +11,14 @@ const errorSlice = createSlice({
     setError(state, { payload }: Action<ErrorState>) {
       state.message = payload.message;
     },
+    setNonVerified(state) {
+      return { ...state, nonVerified: true };
+    },
+    unsetNonVerified(state) {
+      if ('nonVerified' in state) {
+        state.nonVerified = null;
+      }
+    },
     unsetError() {
       return null;
     },

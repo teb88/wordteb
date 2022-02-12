@@ -1,1 +1,1 @@
-export { default } from './Matrix';
+export { default } from './Matrix.container';

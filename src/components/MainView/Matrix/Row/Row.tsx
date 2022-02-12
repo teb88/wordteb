@@ -1,24 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LetterBlock from './LetterBlock/LetterBlock';
 import type { LetterBlock as LetterBlockType } from 'src/types';
+import { motion } from 'framer-motion';
 import { MAX_CHAR_PER_WORD } from 'src/configs';
 
 interface RowProps {
   rowData: Array<LetterBlockType>;
+  hasNonVerifiedErr: null | true;
+  unsetNonVerifiedErr(): void;
 }
 
-const Row: React.FC<RowProps> = ({ rowData }) => {
+const rowShake = {
+  initial: {
+    x: 0,
+  },
+  animation: {
+    x: [null, -30, 30, -30, 0],
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
+
+const Row: React.FC<RowProps> = ({
+  rowData,
+  hasNonVerifiedErr,
+  unsetNonVerifiedErr,
+}) => {
+  const [animation, setAnimation] = useState<string>('initial');
+
   const filledRow = [
     ...rowData,
     ...Array(MAX_CHAR_PER_WORD - rowData.length).fill({ letter: '' }),
   ];
 
+  useEffect(() => {
+    if (hasNonVerifiedErr) {
+      setAnimation('animation');
+    }
+  }, [hasNonVerifiedErr]);
+  
+  const handleAnimationEnded = () => {
+    setAnimation('initial');
+    unsetNonVerifiedErr();
+  };
+
   return (
-    <div className="w-min flex justify-between max-w-md mx-auto">
+    <motion.div
+      variants={rowShake}
+      initial="initial"
+      animate={animation}
+      onAnimationComplete={handleAnimationEnded}
+      className="w-min flex justify-between max-w-md mx-auto"
+    >
       {filledRow.map((letter, i) => (
         <LetterBlock key={i} {...letter} />
       ))}
-    </div>
+    </motion.div>
   );
 };
 

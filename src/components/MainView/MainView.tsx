@@ -17,7 +17,7 @@ const MainView: React.FC<MainViewProps> = ({
 }) => {
   return (
     <div className="max-w-lg mx-auto h-full flex flex-col justify-between">
-      <TopBar logo={<span className="text-3xl p-2">WordTeb</span>} />
+      <TopBar logo={<span className="w-full text-center text-3xl p-2 border-b border-gray-400">WordTeb</span>} />
       <Matrix className="mb-4" />
       <KeyBoard
         onPressEnter={onVerifyWord}
