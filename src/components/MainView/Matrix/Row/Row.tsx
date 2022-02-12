@@ -24,6 +24,15 @@ const rowShake = {
   },
 };
 
+const blockScale = {
+  initial: {
+    scale: 1,
+  },
+  animation: {
+    scale: [1.2, 1]
+  }
+}
+
 const Row: React.FC<RowProps> = ({
   rowData,
   hasNonVerifiedErr,
@@ -49,6 +58,12 @@ const Row: React.FC<RowProps> = ({
     unsetNonVerifiedErr();
   };
 
+  const getCanAnimate = (index: number) => {
+    return index === rowData.length - 1
+      ? 'animation' 
+      : 'initial';
+  }
+
   return (
     <motion.div
       variants={rowShake}
@@ -58,7 +73,14 @@ const Row: React.FC<RowProps> = ({
       className="w-min flex justify-between max-w-md mx-auto"
     >
       {filledRow.map((letter, i) => (
-        <LetterBlock key={i} {...letter} />
+        <motion.div 
+          key={i} 
+          initial="initial" 
+          animate={getCanAnimate(i)} 
+          variants={blockScale} 
+        >
+          <LetterBlock  {...letter} />
+        </motion.div>
       ))}
     </motion.div>
   );
