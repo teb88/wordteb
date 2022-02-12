@@ -17,7 +17,7 @@ export const handleVerifyWord = (word: string) => {
       return 'in-place';
     }
 
-    return winnerWord.includes(word[index]) ? 'exists' : 'none';
+    return winnerWord.includes(word[index].toLowerCase()) ? 'exists' : 'none';
   };
 
   return word.split('').map((letter, i) => ({
