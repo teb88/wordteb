@@ -11,6 +11,10 @@ import { selectWord } from '../selectors/wordle.selectors';
 function* handleVerification() {
   try {
     const word = yield select(selectWord);
+    if (word.length !== 5) {
+      return;
+    }
+    
     const response = yield call(verifyWordRequest, word);
 
     if (response.verified) {

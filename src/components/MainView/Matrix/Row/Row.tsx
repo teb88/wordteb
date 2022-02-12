@@ -3,6 +3,7 @@ import LetterBlock from './LetterBlock/LetterBlock';
 import type { LetterBlock as LetterBlockType } from 'src/types';
 import { motion } from 'framer-motion';
 import { MAX_CHAR_PER_WORD } from 'src/configs';
+import { blockScale, rowShake } from './row.animations';
 
 interface RowProps {
   currentAttempt: number;
@@ -10,27 +11,6 @@ interface RowProps {
   rowData: Array<LetterBlockType>;
   hasNonVerifiedErr: null | true;
   unsetNonVerifiedErr(): void;
-}
-
-const rowShake = {
-  initial: {
-    x: 0,
-  },
-  animation: {
-    x: [null, -30, 30, -30, 0],
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
-
-const blockScale = {
-  initial: {
-    scale: 1,
-  },
-  animation: {
-    scale: [1.2, 1]
-  }
 }
 
 const Row: React.FC<RowProps> = ({

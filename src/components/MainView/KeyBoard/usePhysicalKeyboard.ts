@@ -7,7 +7,7 @@ const usePhysicalKeyboard = ({
 }) => {
   useEffect(() => {
     function handleKeyPress(ev: KeyboardEvent) {
-      if (!ev.isTrusted) {
+      if (!ev.isTrusted || !ev.key.match(new RegExp('[A-Z]{1}', 'ig'))) {
         return;
       }
 
