@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import Matrix from './Matrix';
 
 const mapStateToProps = (state) => {
-  return {    
+  return {
     matrix: selectMatrix(state),
-  }
-}
+  };
+};
 
-export default connect(
-  mapStateToProps
-)(Matrix);
+export default connect(mapStateToProps)(Matrix);

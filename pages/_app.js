@@ -6,13 +6,12 @@ import '../styles/globals.css';
 
 if (process.env.NODE_ENV === 'development') {
   if (typeof window !== 'undefined') {
-    const whyDidYouRender = require('@welldone-software/why-did-you-render')
+    const whyDidYouRender = require('@welldone-software/why-did-you-render');
     whyDidYouRender(React, {
       trackAllPureComponents: true,
-    })
+    });
   }
 }
-
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -12,8 +12,6 @@ interface KeyboardProps {
   discoveredLetters: Record<string, MatchType>;
 }
 
-
-
 const KeyBoard: React.FC<KeyboardProps> = ({
   onKeyPress,
   onPressEnter,
@@ -29,17 +27,24 @@ const KeyBoard: React.FC<KeyboardProps> = ({
   const getKeyRow = ({ type, value, Component }) => {
     switch (type) {
       case 'letters':
-        return value.split('').map((key: string, i: number) => (
-          <Key
-            key={key + i} 
-            letter={key}
-            matchType={discoveredLetters[key]}
-            onClick={() => onKeyPress(key)} />
-        ));
+        return value
+          .split('')
+          .map((key: string, i: number) => (
+            <Key
+              key={key + i}
+              letter={key}
+              matchType={discoveredLetters[key]}
+              onClick={() => onKeyPress(key)}
+            />
+          ));
       case 'key':
         const callback = value === 'Enter' ? onPressEnter : onPressBackspace;
         return (
-          <Key key={value} onClick={callback} letter={Component ? <Component /> : value} />
+          <Key
+            key={value}
+            onClick={callback}
+            letter={Component ? <Component /> : value}
+          />
         );
     }
   };

@@ -26,7 +26,8 @@ const Key: React.FC<KeyProps> = ({ matchType, letter, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`${keyClasses} ${getMatchClasses(matchType)}`}>
+      className={`${keyClasses} ${getMatchClasses(matchType)}`}
+    >
       {letter}
     </button>
   );

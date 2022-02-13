@@ -1,10 +1,8 @@
-import React from 'react'
-import Icon from './Icon'
+import React from 'react';
+import Icon from './Icon';
 
 const IconDelete = () => {
-  return (
-    <Icon src="/icons/delete.svg"></Icon>
-  )
-}
+  return <Icon src="/icons/delete.svg"></Icon>;
+};
 
-export default IconDelete
+export default IconDelete;

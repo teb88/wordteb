@@ -14,13 +14,13 @@ function* handleVerification() {
     if (word.length !== 5) {
       return;
     }
-    
+
     const response = yield call(verifyWordRequest, word);
 
     if (response.verified) {
       yield put(actionVerifyWord_success(response.result));
       yield put(actionAddDiscoveredLetters(response.result));
-    } else {      
+    } else {
       yield put(actionSetNonVerifiedErr());
     }
   } catch (error) {

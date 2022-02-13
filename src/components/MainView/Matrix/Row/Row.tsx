@@ -27,22 +27,20 @@ const Row: React.FC<RowProps> = ({
     ...Array(MAX_CHAR_PER_WORD - rowData.length).fill({ letter: '' }),
   ];
 
-  useEffect(() => {    
+  useEffect(() => {
     if (currentAttempt === rowNumber && hasNonVerifiedErr) {
       setAnimation('animation');
     }
   }, [hasNonVerifiedErr, currentAttempt, rowNumber]);
-  
+
   const handleAnimationEnded = () => {
     setAnimation('initial');
     unsetNonVerifiedErr();
   };
 
   const getCanAnimate = (index: number) => {
-    return index === rowData.length - 1
-      ? 'animation' 
-      : 'initial';
-  }
+    return index === rowData.length - 1 ? 'animation' : 'initial';
+  };
 
   return (
     <motion.div
@@ -53,13 +51,13 @@ const Row: React.FC<RowProps> = ({
       className="w-min flex justify-between max-w-md mx-auto"
     >
       {filledRow.map((letter, i) => (
-        <motion.div 
-          key={i} 
-          initial="initial" 
-          animate={getCanAnimate(i)} 
-          variants={blockScale} 
+        <motion.div
+          key={i}
+          initial="initial"
+          animate={getCanAnimate(i)}
+          variants={blockScale}
         >
-          <LetterBlock  {...letter} />
+          <LetterBlock {...letter} />
         </motion.div>
       ))}
     </motion.div>

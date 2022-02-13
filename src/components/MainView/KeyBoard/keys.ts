@@ -1,5 +1,5 @@
-import IconCheck from "@components/Icons/IconCheck";
-import IconDelete from "@components/Icons/IconDelete";
+import IconCheck from '@components/Icons/IconCheck';
+import IconDelete from '@components/Icons/IconDelete';
 
 const keys = [
   [{ type: 'letters', value: 'QWERTYUIOP' }],

@@ -6,18 +6,15 @@ import Row from './Row';
 
 const mapStateToProps = (state) => {
   return {
-    hasNonVerifiedErr: selectNonVerifiedErr(state),    
+    hasNonVerifiedErr: selectNonVerifiedErr(state),
     currentAttempt: selectCurrentAttempt(state),
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    unsetNonVerifiedErr: () => dispatch(actionUnsetNonVerifiedErr())
-  }
-}
+    unsetNonVerifiedErr: () => dispatch(actionUnsetNonVerifiedErr()),
+  };
+};
 
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(Row);
+export default connect(mapStateToProps, mapDispatchToProps)(Row);

@@ -15,6 +15,6 @@ export const blockScale = {
     scale: 1,
   },
   animation: {
-    scale: [1.2, 1]
-  }
-}
+    scale: [1.2, 1],
+  },
+};
