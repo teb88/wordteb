@@ -1,7 +1,7 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react'
-import store, {persistor} from '../src/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from '../src/store';
 
 import '../styles/globals.css';
 
@@ -14,12 +14,17 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-function MyApp({Component, pageProps}) {
+function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={
-        <div className="w-full h-full flex items-center justify-center text-4xl">LOADING</div>
-      }>
+      <PersistGate
+        persistor={persistor}
+        loading={
+          <div className="w-full h-full flex items-center justify-center text-4xl">
+            LOADING
+          </div>
+        }
+      >
         <Component {...pageProps} />
       </PersistGate>
     </Provider>

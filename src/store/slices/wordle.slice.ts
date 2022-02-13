@@ -58,7 +58,7 @@ export default createSlice({
       state.currentAttempt++;
       if (state.currentAttempt >= MAX_ATTEMPTS) {
         state.gameOver = true;
-      }      
+      }
     },
     addDiscoveredLetter(
       state,

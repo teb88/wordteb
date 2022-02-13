@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
-import { persistReducer, persistStore } from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist-indexeddb-storage';
 import rootSaga from './sagas';
 import wordleSlice from './slices/wordle.slice';
@@ -12,13 +12,13 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   game: wordleSlice.reducer,
   error: errorSlice.reducer,
-})
+});
 
 const persistConfig = {
   key: 'root',
   storage: storage('DB'),
   whitelist: ['game'],
-}
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
