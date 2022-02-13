@@ -28,6 +28,10 @@ export default createSlice({
   reducers: {
     // Mutating the state in a slice is OK becase it's a draft produced by Immer
     addLetter(state, { payload: { letter } }: Action<{ letter: string }>) {
+      if (state.gameOver) {
+        return;
+      }
+
       const row = state.matrix[state.currentAttempt];
       if (row.length >= 5) {
         return;
@@ -35,6 +39,10 @@ export default createSlice({
       row.push({ letter });
     },
     removeLetter(state, _) {
+      if (state.gameOver) {
+        return;
+      }
+
       state.matrix[state.currentAttempt].pop();
     },
     verifyWord(
@@ -48,6 +56,9 @@ export default createSlice({
       }
 
       state.currentAttempt++;
+      if (state.currentAttempt >= MAX_ATTEMPTS) {
+        state.gameOver = true;
+      }      
     },
     addDiscoveredLetter(
       state,
