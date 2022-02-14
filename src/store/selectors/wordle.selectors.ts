@@ -16,6 +16,11 @@ export const selectCurrentAttempt = createSelector(
   (wordle) => wordle.currentAttempt,
 );
 
+export const selectGameHash = createSelector(
+  selectMainState,
+  state => state.gameHash
+);
+
 export const selectWord = createSelector(
   selectMatrix,
   selectCurrentAttempt,

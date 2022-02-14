@@ -6,6 +6,9 @@ export const UNSET_ERROR = 'UNSET_ERROR';
 export const SET_NONVERIFIED_ERR = errorSlice.actions.setNonVerified.type;
 export const UNSET_NONVERIFIED_ERR = errorSlice.actions.unsetNonVerified.type;
 
+export const CHECK_GAME_HASH_SAGA = '[Game Hash] Start';
+export const CHECK_GAME_HASH_SAGA_SUCCESS = wordleSlice.actions.checkGameHash.type;
+
 export const VERIFY_SAGA_START = '[Verify Saga] Start';
 export const VERIFY_SAGA_SUCCESS = wordleSlice.actions.verifyWord.type;
 export const ADD_LETTER = wordleSlice.actions.addLetter.type;

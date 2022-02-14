@@ -10,12 +10,17 @@ export function hash(str) {
   return hash;
 }
 
-export function dateToIndex() {
+function getDateString() {
   const date = new Date();
-  const dateStr = `${date.getDate()}-${
-    date.getMonth() + 1
-  }-${date.getFullYear()}`;
-  return Math.abs(hash(dateStr) % dict.length);
+  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+}
+
+export function dateToHash() {
+  return hash(getDateString());
+}
+
+export function dateToIndex() {
+  return Math.abs(dateToHash() % dict.length);
 }
 
 export function getWinnerWord() {

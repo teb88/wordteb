@@ -1,6 +1,8 @@
 import {
   ADD_DISCOVERED_LETTERS,
   ADD_LETTER,
+  CHECK_GAME_HASH_SAGA,
+  CHECK_GAME_HASH_SAGA_SUCCESS,
   REMOVE_LETTER,
   SET_ERROR,
   SET_NONVERIFIED_ERR,
@@ -27,3 +29,6 @@ export const actionUnsetError = createAction(UNSET_ERROR);
 
 export const actionSetNonVerifiedErr = createAction(SET_NONVERIFIED_ERR);
 export const actionUnsetNonVerifiedErr = createAction(UNSET_NONVERIFIED_ERR);
+
+export const actionCheckGameHash_start = createAction(CHECK_GAME_HASH_SAGA);
+export const actionCheckGameHash_success = createAction(CHECK_GAME_HASH_SAGA_SUCCESS, 'gameHash');

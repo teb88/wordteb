@@ -7,6 +7,7 @@ type GameState = {
   matrix: Array<Array<LetterBlock>>;
   discoveredLetters: Record<string, MatchType>;
   gameOver: boolean;
+  gameHash?: string;
 };
 
 const matchValue: Record<MatchType, number> = {
@@ -76,5 +77,10 @@ export default createSlice({
         }
       });
     },
+    checkGameHash(state, { payload: { gameHash }}: Action<{ gameHash: string }>) {
+      if (gameHash !== state.gameHash) {
+        return { ...initialState, gameHash }
+      }
+    }
   },
 });

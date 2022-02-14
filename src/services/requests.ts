@@ -13,3 +13,9 @@ export const verifyWordRequest = (word: string) => {
 
   return requester(options);
 };
+
+export const verifyGameHashRequest = () => {
+  const options = PATHS.GAME_HASH;
+
+  return requester(options);
+}
