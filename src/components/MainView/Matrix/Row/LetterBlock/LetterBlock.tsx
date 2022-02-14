@@ -4,7 +4,7 @@ import { LetterBlock as LetterBlockType } from 'src/types';
 const matchTypeClasses = {
   none: 'bg-letter-none text-gray-800 border-none',
   exists: 'bg-letter-exists border-none',
-  'in-place': 'bg-letter-in-place text-white border-none',
+  'in-place': 'bg-letter-in-place rounded-lg border-letter-in-place animate-pulse text-white scale-110',
 };
 
 const LetterBlock: React.FC<LetterBlockType> = ({ matchType, letter }) => {
