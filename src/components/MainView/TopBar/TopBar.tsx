@@ -2,14 +2,15 @@ import React from 'react';
 
 interface TopBarProps {
   logo: React.ReactNode | string;
+  right?: React.ReactNode;
 }
 
-const TopBar: React.FC<TopBarProps> = ({ logo }) => {
+const TopBar: React.FC<TopBarProps> = ({ logo, right }) => {
   return (
     <nav className="flex justify-between items-center">
       <div></div>
       {logo}
-      <div></div>
+      {right || <div></div>}
     </nav>
   );
 };
