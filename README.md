@@ -4,7 +4,7 @@
 
 ---
 
-## _Work in process_ ⚠️
+## _Work in progress_ ⚠️
 
 I started this project for a few different reasons.
 
